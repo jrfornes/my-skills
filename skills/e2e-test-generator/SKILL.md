@@ -31,7 +31,7 @@ In the BDD project `apps/app-bdd-e2e/`:
 The `.feature` files themselves stay in `smoke/flows/`; the BDD config points
 `defineBddConfig.featuresRoot`/`features` there.
 
-## Steps (the five-step workflow)
+## Steps (the workflow)
 
 1. **Read `selectors.md`** — it is the source for the page object.
 2. **Generate page objects** — one class per module, methods for each action and
@@ -42,7 +42,11 @@ The `.feature` files themselves stay in `smoke/flows/`; the BDD config points
 4. **Tag the `.feature`** `@hydrated` (feature) or `@regression` (bug). Add
    `@smoke` to scenarios that belong in the fast smoke subset.
 5. **Confirm green locally:** `bddgen && playwright test` (i.e.
-   `nx run app-bdd-e2e:e2e`). Stop.
+   `nx run app-bdd-e2e:e2e`).
+6. **Bug path only:** once the test is green, advance the `bug.md` `status` to
+   `regression-added` (per the shared contract at
+   [`../references/bug.md`](../references/bug.md)). This is the terminal marker
+   `pull-request-publisher` reads to confirm the bug is shippable. Stop.
 
 ## Memory-leak profiles
 
@@ -55,9 +59,19 @@ This replaces the old Playwright-MCP looping sessions that hung.
 
 `pull-request-publisher`.
 
+## Blocked / no progress
+
+If `bddgen` reports undefined steps or the test won't go green, stop **without**
+tagging `@hydrated`/`@regression` (and without advancing `bug.md`) — an
+un-advanced marker tells the orchestrator hydration didn't complete. Surface the
+failing step or assertion rather than reword the scenario to make it pass.
+
 ## Guardrails
 
 - Step text comes from the `.feature`; don't reword scenarios to fit code —
   extend the steps instead.
 - Selectors only from `selectors.md`; add new ones to the component and that file.
 - `bddgen` must pass with **no undefined steps** before you tag `@hydrated`.
+- You own the `.feature` hydration tag. The one cross-artifact exception is the
+  bug path's terminal `bug.md` `status: regression-added`, which you set only
+  after the regression test is green — never any other `bug.md` field.

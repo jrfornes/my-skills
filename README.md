@@ -33,6 +33,7 @@ Claude Code).
 | # | Skill | Station | Reads | Writes | Marker |
 |---|---|---|---|---|---|
 | 0 | [`spec-author`](skills/spec-author/SKILL.md) | Intake | `issues/<KEY>.md` | `.feature` | `@wip` |
+| 0f | [`feature-implementer`](skills/feature-implementer/SKILL.md) | Develop (feature) | `.feature` + `app-map` + rules | code change | `.feature` stays `@wip` |
 | 1f | [`smoke-validator`](skills/smoke-validator/SKILL.md) | Validate (feature) | `.feature` + `app-map` | updated `app-map`, notes | `@smoke-passed` |
 | 1b | [`defect-reproducer`](skills/defect-reproducer/SKILL.md) | Validate (bug) | `.feature` + `app-map` | `bug.md` | `reproduced` |
 | 2b | [`bug-resolver`](skills/bug-resolver/SKILL.md) | Develop (bug) | `bug.md` | code patch | `diagnosed→fixed→verified` |
@@ -53,6 +54,6 @@ Claude Code).
 ## The two paths
 
 ```
-Feature: spec-author → smoke-validator → e2e-test-generator / cypress-test-generator → pull-request-publisher
+Feature: spec-author → feature-implementer → smoke-validator → e2e-test-generator / cypress-test-generator → pull-request-publisher
 Bug:     spec-author → defect-reproducer → bug-resolver → hydrate(@regression) → pull-request-publisher
 ```

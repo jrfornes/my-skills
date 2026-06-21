@@ -20,10 +20,12 @@ pick up exactly where you stopped.
 - `smoke/app-map/<module>/` for selectors and navigation.
 - The source issue's "steps to reproduce" (already distilled into the `.feature`).
 
-## Browser tool — Playwright CLI (not the MCP)
+## Browser tool — Cursor browser tools (default)
 
-Same as `smoke-validator`: drive Playwright through the shell for token
-efficiency. `nx run todo-list:serve`, then walk the repro steps.
+Same as `smoke-validator`: reproduction is interactive and short-lived, so
+default to Cursor's native browser tools. `nx run todo-list:serve`, then walk
+the repro steps. Drop to the Playwright CLI when the repro needs to loop many
+times, and the Playwright MCP only where there is no shell access.
 
 ## Steps
 
@@ -42,29 +44,10 @@ efficiency. `nx run todo-list:serve`, then walk the repro steps.
 
 ## `bug.md` contract
 
-```markdown
----
-key: TODO-2                      # issue / correlation key — REQUIRED
-status: reproduced               # reproduced → diagnosed → fixed → verified → regression-added
-verification:
-  method: e2e                    # how a fix will be confirmed (e2e | unit | manual)
-  command: "nx run app-bdd-e2e:e2e -- --grep @regression"
----
-
-# TODO-2 — <title>
-
-## Expected
-<what should happen>
-
-## Actual
-<what happens instead — the confirmed reproduction>
-
-## Repro steps
-1. ...
-
-## Notes
-<selectors used, environment, anything durable>
-```
+The artifact's template, location, and status lifecycle live in the single
+shared contract at [`../references/bug.md`](../references/bug.md). You produce it
+with `status: reproduced` and own that initial state; later stations own the
+later transitions. Don't redefine the schema here — follow the reference.
 
 ## Next station
 

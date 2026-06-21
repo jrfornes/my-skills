@@ -17,6 +17,8 @@ field is the program counter: read it, do the next step, advance it, stop.
 
 - A `bug.md` at `status: reproduced` (or `diagnosed`), carrying the issue key,
   the confirmed actual-vs-expected, and the `verification.method` / `command`.
+  Its schema and status lifecycle are the shared contract at
+  [`../references/bug.md`](../references/bug.md).
 - The regression `.feature` and `smoke/app-map/<module>/`.
 
 ## Status machine (you own this field)

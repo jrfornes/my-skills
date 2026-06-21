@@ -20,18 +20,23 @@ re-derive it.
 - `smoke/app-map/<module>/` (`navigation.md`, `routes.md`, `selectors.md`).
 - **Never** raw issue prose — you work off the compact `.feature` + app-map.
 
-## Browser tool — Playwright CLI (not the MCP)
+## Browser tool — Cursor browser tools (default)
 
-Use the Playwright CLI driven through shell, not the Playwright MCP. It writes
-snapshots/screenshots to disk as compact YAML with element refs instead of
-streaming the accessibility tree into context (~4x fewer tokens). Reach for the
-MCP only where there is no shell access.
+Smoke is interactive and short-lived, so default to Cursor's native browser
+tools — they have no MCP tool-definition overhead and only surface the output
+relevant to the current step, which is the cheapest option for one-off
+verification.
 
-Typical loop:
+Drop to the **Playwright CLI** (driven through shell) when a flow must loop many
+times — it writes snapshots/screenshots to disk as compact YAML with element
+refs instead of streaming the accessibility tree into context. Reach for the
+Playwright MCP only where there is no shell access.
+
+Either way, start the app first:
 
 ```bash
 nx run todo-list:serve &          # app on http://localhost:4200
-# then drive Playwright via the CLI / a short script, asserting each scenario
+# then drive the browser, asserting each scenario
 ```
 
 ## Steps
@@ -54,6 +59,14 @@ nx run todo-list:serve &          # app on http://localhost:4200
 ## Next station
 
 `e2e-test-generator` (Playwright/BDD) and/or `cypress-test-generator`.
+
+## Blocked / no progress
+
+If a scenario fails, stop **without** advancing the tag — leaving the marker
+where it is signals "not validated" to the orchestrator. A failing scenario is a
+defect, not a smoke pass: surface it (a note in `smoke/smoke-notes.md`) so it can
+move to the bug path. If you can't run the flow at all (app won't serve, missing
+selectors), say so and stop rather than guessing.
 
 ## Guardrails
 
