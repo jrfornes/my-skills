@@ -1,5 +1,5 @@
 ---
-name: browser-repro
+name: defect-reproducer
 description: >-
   Validate station, bug path (Tier 1). Reproduce a reported defect in a real
   browser and lock it in as a `bug.md` artifact + a regression `.feature`. Use
@@ -8,7 +8,7 @@ description: >-
   state.
 ---
 
-# browser-repro — Reproduce and lock a bug
+# defect-reproducer — Reproduce and lock a bug
 
 You read the scenario as a description of a failure, reproduce it in a real
 browser, and capture the result as a durable `bug.md` so a fresh session can
@@ -22,7 +22,7 @@ pick up exactly where you stopped.
 
 ## Browser tool — Playwright CLI (not the MCP)
 
-Same as `browser-smoke`: drive Playwright through the shell for token
+Same as `smoke-validator`: drive Playwright through the shell for token
 efficiency. `nx run todo-list:serve`, then walk the repro steps.
 
 ## Steps

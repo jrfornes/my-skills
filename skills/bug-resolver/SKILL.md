@@ -42,13 +42,13 @@ boundary. Never skip ahead.
 
 ## Output / marker
 
-- Code patch in the working tree (issue-keyed; not committed — `ship-it` does that).
+- Code patch in the working tree (issue-keyed; not committed — `pull-request-publisher` does that).
 - `bug.md` `status` advanced to `diagnosed` / `fixed` / `verified`.
 
 ## Next station
 
-After `verified` → `browser-hydrate` / `cypress-hydrate` to graduate the
-regression test (tag the `.feature` `@regression`), then `ship-it`.
+After `verified` → `e2e-test-generator` / `cypress-test-generator` to graduate the
+regression test (tag the `.feature` `@regression`), then `pull-request-publisher`.
 
 ## Guardrails
 
@@ -56,4 +56,4 @@ regression test (tag the `.feature` `@regression`), then `ship-it`.
   surface the patch for a human to accept.
 - Smallest change that makes the reproduction pass. No scope creep.
 - You own `bug.md` and the code patch; you do not tag the `.feature` (that's
-  hydrate) or push (that's `ship-it`).
+  hydrate) or push (that's `pull-request-publisher`).

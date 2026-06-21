@@ -1,5 +1,5 @@
 ---
-name: browser-hydrate
+name: e2e-test-generator
 description: >-
   Hydrate station, Playwright/BDD stack (Tier 2). Turn a validated `.feature`
   into executable Playwright tests via playwright-bdd: page objects from
@@ -8,7 +8,7 @@ description: >-
   and you want it in the BDD E2E project.
 ---
 
-# browser-hydrate — `.feature` → Playwright/BDD tests
+# e2e-test-generator — `.feature` → Playwright/BDD tests
 
 You compile a validated scenario into runnable Playwright tests. Because
 playwright-bdd compiles the **same** `.feature` files the agent explored, the
@@ -53,7 +53,7 @@ This replaces the old Playwright-MCP looping sessions that hung.
 
 ## Next station
 
-`ship-it`.
+`pull-request-publisher`.
 
 ## Guardrails
 

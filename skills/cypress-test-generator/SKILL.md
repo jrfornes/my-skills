@@ -1,5 +1,5 @@
 ---
-name: cypress-hydrate
+name: cypress-test-generator
 description: >-
   Hydrate station, Cypress stack (Tier 2). Turn a validated `.feature` into an
   executable Cypress spec plus a page object, targeting the selectors in the
@@ -7,7 +7,7 @@ description: >-
   `verified` (bug) and you want it covered in the existing Cypress E2E project.
 ---
 
-# cypress-hydrate — `.feature` → Cypress spec
+# cypress-test-generator — `.feature` → Cypress spec
 
 You turn a validated scenario into a repeatable Cypress test that runs in CI.
 
@@ -41,7 +41,7 @@ Then tag the source `.feature` `@hydrated` (feature) or `@regression` (bug).
 
 ## Next station
 
-`ship-it`.
+`pull-request-publisher`.
 
 ## Guardrails
 

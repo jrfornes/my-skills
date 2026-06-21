@@ -1,5 +1,5 @@
 ---
-name: browser-smoke
+name: smoke-validator
 description: >-
   Validate station, feature path (Tier 1). Drive a real browser to exercise a
   new flow against its `.feature` spec — happy path plus key edge cases. Use
@@ -8,7 +8,7 @@ description: >-
   learn the UI. Cheapest path for one-off verification.
 ---
 
-# browser-smoke — Validate the feature path
+# smoke-validator — Validate the feature path
 
 You exercise a new or changed flow in a real browser to confirm it behaves as
 the `.feature` says, and you record what you learn so the next station doesn't
@@ -53,7 +53,7 @@ nx run todo-list:serve &          # app on http://localhost:4200
 
 ## Next station
 
-`browser-hydrate` (Playwright/BDD) and/or `cypress-hydrate`.
+`e2e-test-generator` (Playwright/BDD) and/or `cypress-test-generator`.
 
 ## Guardrails
 

@@ -1,5 +1,5 @@
 ---
-name: gherkin-me
+name: spec-author
 description: >-
   Intake station (Tier 0). Turn a source issue into a structured Gherkin
   `.feature` spec tagged `@wip`. Use this at the start of any unit of work —
@@ -8,7 +8,7 @@ description: >-
   re-read raw prose.
 ---
 
-# gherkin-me — Intake (issue → `.feature`)
+# spec-author — Intake (issue → `.feature`)
 
 You convert one source issue into a structured `.feature` spec. That file
 becomes the spine of the whole workflow: it is read during browser sessions and
@@ -47,8 +47,8 @@ correlatable (in the path and/or a `# TODO-N` comment).
 
 ## Path selection
 
-- `type: feature` → next station is `browser-smoke`.
-- `type: bug` → next station is `browser-repro`.
+- `type: feature` → next station is `smoke-validator`.
+- `type: bug` → next station is `defect-reproducer`.
 
 ## Guardrails
 

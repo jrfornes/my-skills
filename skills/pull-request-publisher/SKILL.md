@@ -1,5 +1,5 @@
 ---
-name: ship-it
+name: pull-request-publisher
 description: >-
   Ship station — the final, GATED step. Take a verified code change and turn it
   into a reviewable PR: create an issue-keyed branch, commit, open the pull
@@ -8,7 +8,7 @@ description: >-
   the one irreversible side effect, so propose and wait for human confirmation.
 ---
 
-# ship-it — Branch, commit, open PR (gated)
+# pull-request-publisher — Branch, commit, open PR (gated)
 
 You turn a verified change into an open PR. This is the only station that
 performs an irreversible, state-advancing side effect, so it is **gated**:
