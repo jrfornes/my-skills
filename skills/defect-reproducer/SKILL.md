@@ -35,7 +35,12 @@ times, and the Playwright MCP only where there is no shell access.
    the verification method you'll use to later confirm a fix.
 4. Keep the `.feature` as the regression spec; leave its tag `@wip` for now
    (it becomes `@regression` after the fix is verified and hydrated).
-5. Stop.
+5. If reproducing showed the bug needs a capability Cypress can't drive (e.g. a
+   second browser tab/window), tag the `.feature` `@playwright-only` and note why
+   in `bug.md` `## Notes`. That records "don't push a Cypress test for this" so
+   Hydrate routes to `e2e-test-generator` only and `cypress-test-generator`
+   no-ops.
+6. Stop.
 
 ## Output / marker
 

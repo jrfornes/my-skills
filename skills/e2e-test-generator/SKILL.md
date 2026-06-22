@@ -20,6 +20,11 @@ spec of record and the executable test never drift.
   (bug), living under `smoke/flows/...`.
 - `smoke/app-map/<module>/selectors.md` — the page-object contract.
 
+This is the **required** hydrator for any flow tagged `@playwright-only` — those
+need a capability Cypress can't drive (e.g. a second browser tab/window), so
+`cypress-test-generator` no-ops and this station is the only one that hydrates
+and marks them shippable.
+
 ## Output
 
 In the BDD project `apps/app-bdd-e2e/`:

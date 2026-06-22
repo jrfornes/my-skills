@@ -17,6 +17,16 @@ You turn a validated scenario into a repeatable Cypress test that runs in CI.
   `bug.md` (bug path).
 - `smoke/app-map/<module>/selectors.md` — the page-object contract.
 
+## Skip condition — `@playwright-only`
+
+If the `.feature` (or a scenario) is tagged `@playwright-only`, the flow needs a
+capability Cypress can't drive — most often a second browser tab/window, which
+Cypress doesn't support. **No-op and stop:** don't generate a Cypress spec and
+don't treat it as a failure. `e2e-test-generator` (Playwright/BDD) owns
+hydration for these flows and sets the `@hydrated`/`@regression` and
+`regression-added` markers, so the unit still reaches `pull-request-publisher`.
+Do not advance any marker here.
+
 ## Output
 
 In the Cypress project `apps/todo-list-e2e/`:

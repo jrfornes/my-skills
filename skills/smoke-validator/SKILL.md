@@ -49,7 +49,12 @@ nx run todo-list:serve &          # app on http://localhost:4200
    the artifact you own. Add durable observations to `smoke/smoke-notes.md`.
 4. If every scenario passes, promote the spec: change the tag `@wip` →
    `@smoke-passed`. This is the persisted marker that says "ready to hydrate".
-5. Stop.
+5. If you observe the flow needs a capability Cypress can't drive (most often a
+   second browser tab/window), also tag the `.feature` `@playwright-only`. That
+   records the decision "don't push a Cypress test for this" — Hydrate then
+   routes to `e2e-test-generator` (Playwright/BDD) and `cypress-test-generator`
+   no-ops.
+6. Stop.
 
 ## Output / marker
 

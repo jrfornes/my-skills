@@ -57,3 +57,16 @@ Claude Code).
 Feature: spec-author → feature-implementer → smoke-validator → e2e-test-generator / cypress-test-generator → pull-request-publisher
 Bug:     spec-author → defect-reproducer → bug-resolver → hydrate(@regression) → pull-request-publisher
 ```
+
+## Choosing a hydration stack
+
+Playwright/BDD (`e2e-test-generator`) is the default target for `.feature`-hydrated
+flows; Cypress (`cypress-test-generator`) is additive and optional. Either one
+alone sets the markers `pull-request-publisher` reads, so a flow can ship on
+Playwright/BDD without a Cypress test.
+
+When a flow needs a capability Cypress can't drive — most often a second browser
+tab/window — tag the `.feature` `@playwright-only`. That records the deliberate
+"don't push a Cypress test for this" decision: `cypress-test-generator` no-ops on
+the tag, and `e2e-test-generator` is the required hydrator that marks the unit
+shippable.
